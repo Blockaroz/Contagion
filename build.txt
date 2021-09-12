@@ -1,0 +1,3 @@
+displayName = The Contagion
+author = The Contagion Team
+version = 0.1
