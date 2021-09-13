@@ -7,20 +7,19 @@ using Terraria.ModLoader;
 
 namespace Contagion.Content.Tiles
 {
-    public class Pitstone_Tile : ModTile
+    public class PitstoneBrick_Tile : ModTile
     {
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileMergeDirt[Type] = true;
-            Main.tileStone[Type] = true;
+            Main.tileBlendAll[Type] = true;
+            Main.tileBrick[Type] = true;
             Main.tileBlockLight[Type] = true;
-            TileID.Sets.Conversion.Stone[Type] = true;
 
             DustType = ModContent.DustType<PitstoneDust>();
             SoundType = SoundID.Tink;
-            ItemDrop = ModContent.ItemType<Pitstone>();
-            AddMapEntry(new Color(24, 30, 20));
+            ItemDrop = ModContent.ItemType<PitstoneBrick>();
+            AddMapEntry(new Color(0, 50, 0));
         }
     }
 }

@@ -9,17 +9,17 @@ namespace Contagion.Content.Biomes.Water
     {
         public override int ChooseWaterfallStyle() => Find<ModWaterfallStyle>("Contagion/ContagionWaterfallStyle").Slot;
 
-        public override int GetDropletGore() => Find<ModGore>("ContagionWaterGore").Type;
+        public override int GetDropletGore() => Find<ModGore>("Contagion/ContagionWaterGore").Type;
 
         public override int GetSplashDust() => DustType<ContagionSplashDust>();
 
-        //public override void LightColorMultiplier(ref float r, ref float g, ref float b)
-        //{
-        //    r = 1f;
-        //    g = 1f;
-        //    b = 1f;
-        //}
+        public override void LightColorMultiplier(ref float r, ref float g, ref float b)
+        {
+            r = 0.1f;
+            g = 1f;
+            b = 0.2f;
+        }
 
-        public override Color BiomeHairColor() => Color.White;
+        public override Color BiomeHairColor() => Color.DarkOliveGreen;
     }
 }
