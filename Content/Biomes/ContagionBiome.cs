@@ -6,6 +6,8 @@ using Terraria;
 using Terraria.Graphics.Capture;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.Graphics.Capture.CaptureBiome;
+using static Terraria.Main;
 
 namespace Contagion.Content.Biomes
 {
@@ -17,15 +19,20 @@ namespace Contagion.Content.Biomes
         {
             DisplayName.SetDefault("Contagion");
         }
+
+        public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Contagion/ContagionSurfaceBackgroundStyle");
+
         public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Contagion/ContagionWaterStyle");
 
-        public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Mushroom;
+        public override TileColorStyle TileColorStyle => TileColorStyle.Crimson;
 
-        public override int Music => MusicID.Crimson;
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
 
         public override string BestiaryIcon => "Contagion/Content/Biomes/IconEvilContagion";
         public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBG";
-        public override Color? BackgroundColor => new Color(30, 36, 27);
+        public override Color? BackgroundColor => new(30, 36, 27);
+
+        internal float ContagionBiomeInfluence;
 
         public override bool IsBiomeActive(Player player)
         {
