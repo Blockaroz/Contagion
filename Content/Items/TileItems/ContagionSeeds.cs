@@ -19,6 +19,15 @@ namespace Contagion.Content.Items.TileItems
 
         public override bool? UseItem(Player player)
         {
+            if (Main.netMode == NetmodeID.Server)
+                return false;
+
+            Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
+            if (tile.IsActive && tile.type == TileID.Dirt)
+            {
+                WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, ModContent.TileType<ContagionGrass_Tile>(), forced: true);
+                player.inventory[player.selectedItem].stack--;
+            }
 
             return true;
         }

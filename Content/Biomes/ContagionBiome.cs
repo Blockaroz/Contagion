@@ -20,19 +20,24 @@ namespace Contagion.Content.Biomes
             DisplayName.SetDefault("Contagion");
         }
 
-        public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Contagion/ContagionSurfaceBackgroundStyle");
+        //public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Contagion/Content/Biomes/Backgrounds/ContagionSurfaceBackground");
 
         public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Contagion/ContagionWaterStyle");
 
-        public override TileColorStyle TileColorStyle => TileColorStyle.Crimson;
+        public override TileColorStyle TileColorStyle => TileColorStyle.Mushroom;
 
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
 
         public override string BestiaryIcon => "Contagion/Content/Biomes/IconEvilContagion";
-        public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBG";
+        public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBackgroud";
         public override Color? BackgroundColor => new(30, 36, 27);
 
         internal float ContagionBiomeInfluence;
+
+        public override float GetWeight(Player player)
+        {
+            return base.GetWeight(player);
+        }
 
         public override bool IsBiomeActive(Player player)
         {

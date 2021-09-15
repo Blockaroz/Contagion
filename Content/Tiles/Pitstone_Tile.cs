@@ -12,10 +12,12 @@ namespace Contagion.Content.Tiles
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;
+            Main.tileShine2[Type] = true;
             Main.tileMergeDirt[Type] = true;
-            Main.tileStone[Type] = true;
+            Main.tileBrick[Type] = true;
             Main.tileBlockLight[Type] = true;
             TileID.Sets.Conversion.Stone[Type] = true;
+            TileID.Sets.BlockMergesWithMergeAllBlock[Type] = true;
 
             DustType = ModContent.DustType<PitstoneDust>();
             SoundType = SoundID.Tink;

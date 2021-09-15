@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace Contagion.Content.Biomes.Backgrounds
 {
-	public class ContagionSurfaceBackgroundStyle : ModSurfaceBackgroundStyle
+	public class ContagionSurfaceBackground : ModSurfaceBackgroundStyle
 	{
 		public override void ModifyFarFades(float[] fades, float transitionSpeed)
 		{
