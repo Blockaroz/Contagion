@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,7 @@ namespace Contagion.Content.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Luger");
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
 		public override void SetDefaults() 
@@ -25,7 +27,7 @@ namespace Contagion.Content.Items.Weapons
 			Item.width = 44;
 			Item.height = 20;
 			Item.useStyle = ItemUseStyleID.Shoot;
-			Item.UseSound = SoundID.Item41;
+			Item.UseSound = SoundID.Item40;
 			Item.rare = ItemRarityID.Blue;
 			Item.value = Item.buyPrice(0, 1, 50, 0);
 		}

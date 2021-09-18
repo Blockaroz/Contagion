@@ -5,7 +5,7 @@ using Terraria.Enums;
 using Terraria.ID;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using Contagion.Content.Dust;
+using Contagion.Content.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Contagion.Content.Tiles.Trees

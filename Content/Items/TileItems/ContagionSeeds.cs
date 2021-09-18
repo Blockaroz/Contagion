@@ -1,5 +1,6 @@
 ﻿using Contagion.Content.Tiles;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,7 @@ namespace Contagion.Content.Items.TileItems
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Contagion Seeds");
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         }
 
         public override void SetDefaults()

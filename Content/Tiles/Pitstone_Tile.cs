@@ -1,4 +1,4 @@
-﻿using Contagion.Content.Dust;
+﻿using Contagion.Content.Dusts;
 using Contagion.Content.Items.TileItems;
 using Microsoft.Xna.Framework;
 using Terraria;
