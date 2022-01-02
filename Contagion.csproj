@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../tModLoader.targets" />
+  <Import Project="..\tModLoader.targets" />
   <PropertyGroup>
     <AssemblyName>Contagion</AssemblyName>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Content\ChainTextures\**" />
-    <Compile Remove="Content\Furniture\**" />
-    <Compile Remove="Content\Items\Wiltwood\**" />
-    <Compile Remove="Content\NPCs\**" />
-    <Compile Remove="Content\TileOutlines\**" />
-    <Compile Remove="Content\UI\**" />
-    <EmbeddedResource Remove="Content\ChainTextures\**" />
-    <EmbeddedResource Remove="Content\Furniture\**" />
-    <EmbeddedResource Remove="Content\Items\Wiltwood\**" />
-    <EmbeddedResource Remove="Content\NPCs\**" />
-    <EmbeddedResource Remove="Content\TileOutlines\**" />
-    <EmbeddedResource Remove="Content\UI\**" />
-    <None Remove="Content\ChainTextures\**" />
-    <None Remove="Content\Furniture\**" />
-    <None Remove="Content\Items\Wiltwood\**" />
-    <None Remove="Content\NPCs\**" />
-    <None Remove="Content\TileOutlines\**" />
-    <None Remove="Content\UI\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Sounds\" />
   </ItemGroup>
 </Project>

@@ -17,14 +17,14 @@ namespace Contagion.Content.Biomes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Contagion");
+            DisplayName.SetDefault("The Contagion");
         }
 
         //public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Contagion/Content/Biomes/Backgrounds/ContagionSurfaceBackground");
 
         public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Contagion/ContagionWaterStyle");
 
-        public override TileColorStyle TileColorStyle => TileColorStyle.Mushroom;
+        public override TileColorStyle TileColorStyle => TileColorStyle.Corrupt;
 
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
 

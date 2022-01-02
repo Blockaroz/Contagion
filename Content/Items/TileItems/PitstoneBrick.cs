@@ -10,6 +10,7 @@ namespace Contagion.Content.Items.TileItems
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Pitstone Brick");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
         }
 

@@ -16,7 +16,7 @@ namespace Contagion.Content.Biomes.Water
         public override void LightColorMultiplier(ref float r, ref float g, ref float b)
         {
             r = 0.15f;
-            g = 0.8f;
+            g = 0.9f;
             b = 0.365f;
         }
 

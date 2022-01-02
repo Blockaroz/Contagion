@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace Contagion.Content.Items.TileItems
 {
@@ -19,19 +20,23 @@ namespace Contagion.Content.Items.TileItems
             Item.DefaultToPlaceableTile(ModContent.TileType<ContagionGrass_Tile>(), 0);
         }
 
-        public override bool? UseItem(Player player)
-        {
-            if (Main.netMode == NetmodeID.Server)
-                return false;
+        //public override bool? UseItem(Player player)
+        //{
+        //    if (Main.netMode == NetmodeID.Server)
+        //        return false;
 
-            Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
-            if (tile.IsActive && tile.type == TileID.Dirt)
-            {
-                WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, ModContent.TileType<ContagionGrass_Tile>(), forced: true);
-                player.inventory[player.selectedItem].stack--;
-            }
+        //    Tile tile = Framing.GetTileSafely(Player.tileTargetX, Player.tileTargetY);
 
-            return true;
-        }
+        //    Vector2 tileTarget = new Vector2(Player.tileTargetX, Player.tileTargetY);
+        //    player.LimitPointToPlayerReachableArea(ref tileTarget);
+
+        //    if (tile.IsActive && tile.type == TileID.Dirt)
+        //    {
+        //        WorldGen.PlaceTile((int)tileTarget.X, (int)tileTarget.Y, ModContent.TileType<ContagionGrass_Tile>(), forced: true);
+        //        player.inventory[player.selectedItem].stack--;
+        //    }
+
+        //    return true;
+        //}
     }
 }
