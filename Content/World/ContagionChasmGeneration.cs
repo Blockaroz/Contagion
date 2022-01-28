@@ -19,8 +19,8 @@ namespace Contagion.Content.World
 
         public override void PostUpdateWorld()
         {
-			if (JustPressed(Keys.D1))
-				GenerateRingChasm((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16);
+			//if (JustPressed(Keys.D1))
+			//	GenerateRingChasm((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16);
 		}
 
 		private int Pitstone => ModContent.TileType<Pitstone_Tile>();
