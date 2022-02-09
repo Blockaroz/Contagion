@@ -1,4 +1,4 @@
-﻿using Contagion.Content.Dusts;
+﻿using Contagion.Content.Particles;
 using Contagion.Content.Tiles.Trees;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -47,7 +47,7 @@ namespace Contagion.Content.Tiles
             if (!fail)
             {
                 fail = true;
-                Framing.GetTileSafely(i, j).type = TileID.Dirt;
+                Framing.GetTileSafely(i, j).TileType = TileID.Dirt;
             }
         }
     }

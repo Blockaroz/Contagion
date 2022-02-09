@@ -2,9 +2,9 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Contagion.Content.Dusts
+namespace Contagion.Content.Particles
 {
-    public class ContagionFoliage1 : ModDust
+    public class WeedwoodDust : ModDust
     {
     }
 }

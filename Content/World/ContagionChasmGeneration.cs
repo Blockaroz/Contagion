@@ -12,28 +12,26 @@ namespace Contagion.Content.World
 {
 	class ContagionChasmGeneration : ModSystem
 	{
-		public static bool JustPressed(Keys key)
+		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
-			return Main.keyState.IsKeyDown(key) && !Main.oldKeyState.IsKeyDown(key);
+			int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+			int EvilIndex = tasks.FindIndex(genpass => genpass.Name.Equals(""));
+
+			if (ShiniesIndex != -1)
+			{
+			}
 		}
 
-        public override void PostUpdateWorld()
+        private static int Pitstone => ModContent.TileType<Pitstone_Tile>();
+		private static int PitstoneWall => WallID.Stone;//ModContent.WallType<>();
+
+		
+		private void GenerateContagionChasm(GenerationProgress progress)
         {
-			//if (JustPressed(Keys.D1))
-			//	GenerateRingChasm((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16);
-		}
+			
+        }
 
-		private int Pitstone => ModContent.TileType<Pitstone_Tile>();
-		private int PitstoneWall => WallID.ObsidianBackEcho;//ModContent.WallType<>();
-
-		private void InfectRegion(int x, int y)
-		{
-
-		}
-
-		private List<Point> colonyPositions = new List<Point>();
-
-		private void GenerateRingChasm(int x, int y)
+		private void GenerateChasmRing(int x, int y)
         {
 			int ringSize = 80;
 
@@ -69,36 +67,6 @@ namespace Contagion.Content.World
 
 			//dig out the entrance mound
 			WorldGen.digTunnel(x, y - (ringSize * 1.1f), 0, -1f, 15, 12);
-
-			//spawn colonies
-			for (int i = 0; i < WorldGen.genRand.Next(16, 21); i++)
-			{
-				Vector2 colonyPosition = new Vector2(x, y) + ((MathHelper.TwoPi * WorldGen.genRand.NextFloat()).ToRotationVector2() * ringSize);
-				if (Main.rand.NextBool())
-                {
-					//tunnel
-					colonyPosition *= 1.2f;
-					colonyPositions.Add(colonyPosition.ToPoint());
-				}
-                else
-                {
-					colonyPosition *= Main.rand.NextFloat(0.5f, 0.8f);
-					colonyPositions.Add(colonyPosition.ToPoint());
-				}
-			}
-
-			//DigColonyHoles(colonyPositions);
-		}
-
-		private void DigColonyHoles(List<Point> points)
-        {
-			//place
-			for (int i = 0; i < points.Count; i++)
-				WorldUtils.Gen(points[i], new Shapes.Circle(8), new Actions.SetTile((ushort)Pitstone));
-			//dig
-			for (int j = 0; j < points.Count; j++)
-				WorldGen.digTunnel(points[j].X, points[j].Y, 0, 0, 4, 8);
-			//place colony
 		}
 	}
 }
