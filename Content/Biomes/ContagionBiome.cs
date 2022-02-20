@@ -34,16 +34,11 @@ namespace Contagion.Content.Biomes
 
         internal float ContagionBiomeInfluence;
 
-        public override float GetWeight(Player player)
-        {
-            return base.GetWeight(player);
-        }
-
         public override bool IsBiomeActive(Player player)
         {
-            bool b1 = ModContent.GetInstance<ContagionBlockCounts>().contagionBlockCount >= 300;
-            bool b2 = player.ZoneSkyHeight || player.ZoneOverworldHeight;
-            return b1 && b2;
+            bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionBlockCount >= 300;
+            bool correctZone = player.ZoneSkyHeight || player.ZoneOverworldHeight;
+            return biomeExists && correctZone;
         }
     }
 
@@ -53,7 +48,11 @@ namespace Contagion.Content.Biomes
 
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
-            contagionBlockCount = tileCounts[ModContent.TileType<Pitstone_Tile>()];
+            int combinedTileCount = 0;
+            combinedTileCount += tileCounts[ModContent.TileType<ContagionGrass_Tile>()];
+            combinedTileCount += tileCounts[ModContent.TileType<Pitstone_Tile>()];
+
+            contagionBlockCount = combinedTileCount;
         }
     }
 }

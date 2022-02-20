@@ -17,6 +17,7 @@ namespace Contagion.Content.Tiles
             Main.tileBrick[Type] = true;
             Main.tileBlockLight[Type] = true;
             TileID.Sets.Conversion.Stone[Type] = true;
+            TileID.Sets.Stone[Type] = true;
             TileID.Sets.BlockMergesWithMergeAllBlock[Type] = true;
 
             DustType = ModContent.DustType<PitstoneDust>();
