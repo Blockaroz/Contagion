@@ -1,4 +1,5 @@
 ﻿using Contagion.Content.Tiles;
+using Contagion.Content.Walls;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -48,7 +49,7 @@ namespace Contagion
             //int hardSandType = ModContent.TileType<Pitstone_Tile>();
 
             //int grassWallType = ModContent.TileType<ContagionGrass_Tile>();
-            //int stoneWallType = ModContent.TileType<Pitstone_Tile>();
+            int stoneWallType = ModContent.WallType<PitstoneWall_Wall>();
 
             //int sandWallStoneType = ModContent.TileType<Pitstone_Tile>();
             //int hardWallSandType = ModContent.TileType<Pitstone_Tile>();
@@ -64,13 +65,13 @@ namespace Contagion
                         int wall = Main.tile[x, y].WallType;
 
                         //tiles
-                        if (TileID.Sets.Conversion.Grass[tile])
+                        if (TileID.Sets.Conversion.Grass[tile] && Main.tile[x, y].TileType != (ushort)grassType)
                         {
                             Main.tile[x, y].TileType = (ushort)grassType;
                             WorldGen.SquareTileFrame(x, y);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }
-                        if (TileID.Sets.Conversion.Stone[tile])
+                        if (TileID.Sets.Conversion.Stone[tile] && Main.tile[x, y].TileType != (ushort)stoneType)
                         {
                             Main.tile[x, y].TileType = (ushort)stoneType;
                             WorldGen.SquareTileFrame(x, y);
@@ -78,18 +79,18 @@ namespace Contagion
                         }
 
                         //walls
-                        //if (WallID.Sets.Conversion.Grass[wall])
+                        //if (WallID.Sets.Conversion.Grass[wall] && Main.tile[x, y].WallType != (ushort)grassWallType)
                         //{
                         //    Main.tile[x, y].WallType = (ushort)grassWallType;
                         //    WorldGen.SquareTileFrame(x, y);
                         //    NetMessage.SendTileSquare(-1, x, y, 1);
                         //}                        
-                        //if (WallID.Sets.Conversion.Stone[wall])
-                        //{
-                        //    Main.tile[x, y].WallType = (ushort)stoneWallType;
-                        //    WorldGen.SquareTileFrame(x, y);
-                        //    NetMessage.SendTileSquare(-1, x, y, 1);
-                        //}
+                        if (WallID.Sets.Conversion.Stone[wall] && Main.tile[x, y].WallType != (ushort)stoneWallType)
+                        {
+                            Main.tile[x, y].WallType = (ushort)stoneWallType;
+                            WorldGen.SquareTileFrame(x, y);
+                            NetMessage.SendTileSquare(-1, x, y, 1);
+                        }
                     }
                 }
             }

@@ -6,10 +6,6 @@ namespace Contagion
 {
 	public class Contagion : Mod
 	{
-        public override void Load()
-        {
-            
-        }
 
         public override void AddRecipes()
         {

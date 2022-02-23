@@ -1,4 +1,5 @@
 ﻿using Contagion.Content.Tiles;
+using Contagion.Content.Walls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -10,7 +11,7 @@ using Terraria.WorldBuilding;
 
 namespace Contagion.Content.World
 {
-	class ContagionChasmGeneration : ModSystem
+	class ContagionGeneration : ModSystem
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
@@ -23,25 +24,22 @@ namespace Contagion.Content.World
 		}
 
         private static int Pitstone => ModContent.TileType<Pitstone_Tile>();
-		private static int PitstoneWall => WallID.Stone;//ModContent.WallType<>();
+		private static int PitstoneWall => ModContent.WallType<PitstoneWall_Wall>();
 
-		
 		private void GenerateContagionChasm(GenerationProgress progress)
         {
 			
         }
 
-		private void GenerateChasmRing(int x, int y)
+		private void GenerateChasmRing(int ringSize, int x, int y)
         {
-			int ringSize = 80;
-
 			//place circle
 			for (int i = 0; i < 180; i++)
 			{	
 				Vector2 direction = ((MathHelper.TwoPi / 180 * i) + MathHelper.PiOver2).ToRotationVector2();
 				direction.X *= Main.rand.NextFloat(1f, 1.1f);
-				WorldGen.TileRunner(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize), 50, ringSize / 4, Pitstone, addTile: true, overRide: true);
-				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 1.2f), y + (int)(direction.Y * ringSize * 1.2f), 15, ringSize / 3, Pitstone, addTile: true, overRide: true);
+				WorldGen.TileRunner(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize), 50, ringSize / 5, Pitstone, addTile: true, overRide: true);
+				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 1.2f), y + (int)(direction.Y * ringSize * 1.2f), 15, ringSize / 4, Pitstone, addTile: true, overRide: true);
 
 				WorldUtils.Gen(new Point(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize)), new Shapes.Circle(15), new Actions.PlaceWall((ushort)PitstoneWall));
 			}
@@ -58,7 +56,7 @@ namespace Contagion.Content.World
 			{
 				Vector2 direction = ((MathHelper.TwoPi / 180 * i) + MathHelper.PiOver2).ToRotationVector2();
 				direction.X *= Main.rand.NextFloat(1f, 1.1f);
-				WorldGen.digTunnel(x + (direction.X * ringSize), y + (direction.Y * ringSize), 0, 0, ringSize / 4, 3);
+				WorldGen.digTunnel(x + (direction.X * ringSize), y + (direction.Y * ringSize), 0, 0, ringSize / 5, 3);
 			}
 
 			//dig a small pit
