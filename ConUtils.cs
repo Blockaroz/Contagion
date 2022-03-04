@@ -84,7 +84,7 @@ namespace Contagion
                         //    Main.tile[x, y].WallType = (ushort)grassWallType;
                         //    WorldGen.SquareTileFrame(x, y);
                         //    NetMessage.SendTileSquare(-1, x, y, 1);
-                        //}                        
+                        //}
                         if (WallID.Sets.Conversion.Stone[wall] && Main.tile[x, y].WallType != (ushort)stoneWallType)
                         {
                             Main.tile[x, y].WallType = (ushort)stoneWallType;
