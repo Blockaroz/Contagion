@@ -32,7 +32,7 @@ namespace Contagion.Content.Projectiles
         public override void AI()
         {
             if (Projectile.owner == Main.myPlayer)
-                ConUtils.ContagionInfect((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, 2);
+                CtgnUtils.InfectWithContagion((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, 2);
 
             if (Projectile.timeLeft > 133)
                 Projectile.timeLeft = 133;

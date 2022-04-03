@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Contagion.Content.Tiles.Trees
 {
-    public class WeedwoodSapling : ModTile
+    public class RingwoodSapling : ModTile
     {
 		public override void SetStaticDefaults()
 		{
@@ -53,7 +53,7 @@ namespace Contagion.Content.Tiles.Trees
         public override int SaplingGrowthType(ref int style)
         {
 			style = 0;
-			return ModContent.TileType<WeedwoodSapling>();
+			return ModContent.TileType<RingwoodSapling>();
         }
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

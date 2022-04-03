@@ -25,6 +25,11 @@ namespace Contagion.Content.Items.TileItems
                 .AddIngredient(ModContent.ItemType<Pitstone>(), 2)
                 .AddTile(TileID.Furnaces)
                 .Register();
+
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<WallItems.PitstoneBrickWall>())
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

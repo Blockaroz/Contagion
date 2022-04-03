@@ -14,6 +14,8 @@ namespace Contagion.Content.Items.Armor
             ferrymanOn = false;
         }
 
-
+        public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
+        {
+        }
     }
 }

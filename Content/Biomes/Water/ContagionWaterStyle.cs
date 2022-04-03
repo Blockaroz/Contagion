@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -21,5 +23,9 @@ namespace Contagion.Content.Biomes.Water
         }
 
         public override Color BiomeHairColor() => Color.DarkOliveGreen;
+
+        public override Asset<Texture2D> GetRainTexture() => Mod.Assets.Request<Texture2D>("Content/Biomes/Water/ContagionRain");
+
+        public override byte GetRainVariant() => (byte)Main.rand.Next(3);
     }
 }

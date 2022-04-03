@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Contagion.Content.Items.TileItems
 {
-    public class Pitstone : ModItem
+    public class HardenedPitsand : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -15,13 +15,13 @@ namespace Contagion.Content.Items.TileItems
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<Pitstone_Tile>());
+            Item.DefaultToPlaceableTile(ModContent.TileType<HardenedPitsand_Tile>());
         }
 
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<WallItems.PitstoneWall>(4)
+                .AddIngredient<WallItems.HardenedPitsandWall>(4)
                 .AddTile(TileID.WorkBenches)
                 .AddCondition(Recipe.Condition.InGraveyardBiome)
                 .Register();

@@ -3,21 +3,18 @@ using Contagion.Content.Tiles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.Graphics.Capture;
-using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.Graphics.Capture.CaptureBiome;
-using static Terraria.Main;
 
 namespace Contagion.Content.Biomes
 {
-    public class ContagionBiome : ModBiome
+    public class ContagionSurface : ModBiome
     {
-        public override bool IsPrimaryBiome => true;
+        public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Contagion");
+            DisplayName.SetDefault("Contagion");
         }
 
         //public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.Find<ModSurfaceBackgroundStyle>("Contagion/Content/Biomes/Backgrounds/ContagionSurfaceBackground");
@@ -28,31 +25,15 @@ namespace Contagion.Content.Biomes
 
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
 
-        public override string BestiaryIcon => "Contagion/Content/Biomes/IconEvilContagion";
-        public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBackgroud";
+        public override string BestiaryIcon => "Contagion/Content/Biomes/IconContagion";
+        public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBackground";
         public override Color? BackgroundColor => new(30, 36, 27);
-
-        internal float ContagionBiomeInfluence;
 
         public override bool IsBiomeActive(Player player)
         {
-            bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionBlockCount >= 300;
+            bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionCountTotal >= 300;
             bool correctZone = player.ZoneSkyHeight || player.ZoneOverworldHeight;
             return biomeExists && correctZone;
-        }
-    }
-
-    public class ContagionBlockCounts : ModSystem
-    {
-        public int contagionBlockCount;
-
-        public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
-        {
-            int combinedTileCount = 0;
-            combinedTileCount += tileCounts[ModContent.TileType<ContagionGrass_Tile>()];
-            combinedTileCount += tileCounts[ModContent.TileType<Pitstone_Tile>()];
-
-            contagionBlockCount = combinedTileCount;
         }
     }
 }

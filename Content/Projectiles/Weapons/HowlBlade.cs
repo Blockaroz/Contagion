@@ -54,13 +54,13 @@ namespace Contagion.Content.Projectiles.Weapons
                     Color trailColor = Color.PaleGoldenrod;
                     trailColor.A /= 2;
                     float alphaLerp = Utils.GetLerpValue(4, 1, i) * 0.7f;
-                    Main.EntitySpriteDraw(texture.Value, Projectile.oldPos[i] + (texture.Size() / 2) - Main.screenPosition, new Rectangle?(texture.Frame()), trailColor * alphaLerp * spawnAlpha, Projectile.oldRot[i] + MathHelper.PiOver4, texture.Size() / 2, Projectile.scale * 0.8f, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw(texture.Value, Projectile.oldPos[i] + new Vector2(14) - Main.screenPosition, null, trailColor * alphaLerp * spawnAlpha, Projectile.oldRot[i] + MathHelper.PiOver4, texture.Size() / 2f, Projectile.scale * 0.8f, SpriteEffects.None, 0);
                 }
             }
             Lighting.AddLight(Projectile.position, Color.DarkGoldenrod.ToVector3());
             Color drawColor = Color.White;
             drawColor.A /= 2;
-            Main.EntitySpriteDraw(texture.Value, Projectile.Center - Main.screenPosition, new Rectangle?(texture.Frame()), drawColor * spawnAlpha, Projectile.rotation + MathHelper.PiOver4, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture.Value, Projectile.Center - Main.screenPosition, null, drawColor * spawnAlpha, Projectile.rotation + MathHelper.PiOver4, texture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 
             return false;
         }

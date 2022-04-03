@@ -26,7 +26,7 @@ namespace Contagion.Content.Tiles
             DustType = ModContent.DustType<ContagionFoliage1>();
             ItemDrop = ItemID.DirtBlock;
             AddMapEntry(new Color(76, 104, 41));
-            SetModTree(ModContent.GetInstance<WeedwoodTree>());
+            SetModTree(ModContent.GetInstance<RingwoodTree>());
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
@@ -45,7 +45,7 @@ namespace Contagion.Content.Tiles
         public override int SaplingGrowthType(ref int style)
         {
             style = 0;
-            return ModContent.TileType<WeedwoodSapling>();
+            return ModContent.TileType<RingwoodSapling>();
         }
 
         public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

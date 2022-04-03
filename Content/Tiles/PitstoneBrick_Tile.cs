@@ -20,7 +20,7 @@ namespace Contagion.Content.Tiles
             DustType = ModContent.DustType<PitstoneDust>();
             SoundType = SoundID.Tink;
             ItemDrop = ModContent.ItemType<PitstoneBrick>();
-            AddMapEntry(new Color(0, 50, 0));
+            AddMapEntry(new Color(87, 114, 78));
         }
     }
 }
