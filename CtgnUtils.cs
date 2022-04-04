@@ -12,39 +12,12 @@ namespace Contagion
     {
         //private static Mod Mod { get => ModContent.GetInstance<Contagion>(); }
 
-        //sort of a base
-        private static void Convert(int i, int j, bool convertTile, bool convertWall, int toTileType, int toWallType, int size = 4)
-        {
-            for (int x = i - size; x <= i + size; x++)
-            {
-                for (int y = j - size; y <= j + size; y++)
-                {
-                    bool range = Math.Abs(x - i) + Math.Abs(y - j) < Math.Sqrt((size * size) + (size * size));
-                    if (WorldGen.InWorld(x, y, 1) && range)
-                    {
-                        if (convertTile) 
-                        {
-                            Main.tile[x, y].TileType = (ushort)toTileType;
-                            WorldGen.SquareTileFrame(x, y);
-                            NetMessage.SendTileSquare(-1, x, y, 1);
-                        }
-                        if (convertWall)
-                        {
-                            Main.tile[x, y].WallType = (ushort)toWallType;
-                            WorldGen.SquareTileFrame(x, y);
-                            NetMessage.SendTileSquare(-1, x, y, 1);
-                        }
-                    } 
-                }
-            }
-        }
-
         public static void InfectWithContagion(int i, int j, int size = 4)
         {
             int grassType = ModContent.TileType<ContagionGrass_Tile>();
             int stoneType = ModContent.TileType<Pitstone_Tile>();
             //int thornType = ModContent.TileType<Pitstone_Tile>();
-            //int iceType = ModContent.TileType<Pitstone_Tile>();
+            int iceType = ModContent.TileType<SeaGreenIce_Tile>();
 
             int sandType = ModContent.TileType<Pitsand_Tile>();
             int sandStoneType = ModContent.TileType<Pitsandstone_Tile>();
@@ -79,7 +52,12 @@ namespace Contagion
                             WorldGen.SquareTileFrame(x, y);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }
-                        //ice
+                        if (TileID.Sets.Conversion.Ice[tile] && Main.tile[x, y].TileType != (ushort)iceType)
+                        {
+                            Main.tile[x, y].TileType = (ushort)iceType;
+                            WorldGen.SquareTileFrame(x, y);
+                            NetMessage.SendTileSquare(-1, x, y, 1);
+                        }
                         if (TileID.Sets.Conversion.Sand[tile] && Main.tile[x, y].TileType != (ushort)sandType)
                         {
                             Main.tile[x, y].TileType = (ushort)sandType;

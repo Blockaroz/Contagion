@@ -12,13 +12,16 @@ namespace Contagion.Content.Biomes
     {
         public int contagionCountTotal;
         public int contagionCountRegular;
+        public int contagionCountIce;
         public int contagionCountDesert;
 
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
             contagionCountRegular = tileCounts[ModContent.TileType<ContagionGrass_Tile>()] + tileCounts[ModContent.TileType<Pitstone_Tile>()];
+            contagionCountIce = tileCounts[ModContent.TileType<SeaGreenIce_Tile>()];
             contagionCountDesert = tileCounts[ModContent.TileType<Pitsand_Tile>()] + tileCounts[ModContent.TileType<Pitsandstone_Tile>()] + tileCounts[ModContent.TileType<HardenedPitsand_Tile>()];
-            contagionCountTotal = contagionCountRegular + contagionCountDesert;
+            
+            contagionCountTotal = contagionCountRegular + contagionCountIce + contagionCountDesert;
         }
     }
 }

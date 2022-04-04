@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Contagion.Content.Tiles
 {
-    public class HardenedPitsand_Tile : ModTile
+    public class Pitsandstone_Tile : ModTile
     {
         public override void SetStaticDefaults()
         {
@@ -20,7 +20,7 @@ namespace Contagion.Content.Tiles
 
             DustType = ModContent.DustType<PitsandDust>();
             SoundType = SoundID.Dig;
-            ItemDrop = ModContent.ItemType<HardenedPitsand>();
+            ItemDrop = ModContent.ItemType<Pitsandstone>();
             AddMapEntry(new Color(41, 51, 43));
         }
     }

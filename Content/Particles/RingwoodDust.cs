@@ -4,7 +4,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Contagion.Content.Particles
 {
-    public class WeedwoodDust : ModDust
+    public class RingwoodDust : ModDust
     {
     }
 }
