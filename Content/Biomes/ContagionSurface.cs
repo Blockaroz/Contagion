@@ -21,7 +21,7 @@ namespace Contagion.Content.Biomes
 
         public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Contagion/ContagionWaterStyle");
 
-        public override TileColorStyle TileColorStyle => TileColorStyle.Corrupt;
+        public override TileColorStyle TileColorStyle => TileColorStyle.Jungle;
 
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
 

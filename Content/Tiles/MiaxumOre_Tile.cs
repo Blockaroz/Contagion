@@ -15,14 +15,15 @@ namespace Contagion.Content.Tiles
             Main.tileSpelunker[Type] = true;
             Main.tileOreFinderPriority[Type] = 330;
             Main.tileShine2[Type] = true;
-            Main.tileShine[Type] = 975;
+            Main.tileShine[Type] = 1150;
             Main.tileMergeDirt[Type] = true;
+            Main.tileLighted[Type] = true;
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
 
             DustType = ModContent.DustType<Particles.Dusts.MiaxumDust>();
             SoundType = SoundID.Tink;
-            ItemDrop = ModContent.ItemType<Pitsandstone>();
+            ItemDrop = ModContent.ItemType<Items.MiaxumOre>();
             AddMapEntry(new Color(55, 198, 79));
         }
     }
