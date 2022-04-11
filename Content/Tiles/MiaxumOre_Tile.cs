@@ -26,5 +26,12 @@ namespace Contagion.Content.Tiles
             ItemDrop = ModContent.ItemType<Items.MiaxumOre>();
             AddMapEntry(new Color(55, 198, 79));
         }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        {
+            r = 0f;
+            g = 0.2f;
+            b = 0.13f;
+        }
     }
 }

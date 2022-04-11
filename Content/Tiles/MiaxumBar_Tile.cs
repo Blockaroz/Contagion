@@ -27,13 +27,6 @@ namespace Contagion.Content.Tiles
             AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.MetalBar"));
         }
 
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-        {
-            r = 0.05f;
-            g = 0.2f;
-            b = 0.05f;
-        }
-
         public override bool Drop(int i, int j)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.MiaxumBar>());
