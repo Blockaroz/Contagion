@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Contagion.Content.Particles
+namespace Contagion.Content.Particles.Dusts
 {
     public class SeaGreenSolution : ModDust
     {

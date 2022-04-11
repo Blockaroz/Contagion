@@ -23,10 +23,10 @@ namespace Contagion.Content.Tiles
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[Type][TileID.Dirt] = true;
 
-            DustType = ModContent.DustType<ContagionFoliage1>();
+            DustType = ModContent.DustType<Particles.Dusts.ContagionFoliage1>();
             ItemDrop = ItemID.DirtBlock;
-            AddMapEntry(new Color(76, 104, 41));
-            SetModTree(ModContent.GetInstance<RingwoodTree>());
+            SetModTree(new RingwoodTree());
+            AddMapEntry(new Color(109, 127, 52));
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)

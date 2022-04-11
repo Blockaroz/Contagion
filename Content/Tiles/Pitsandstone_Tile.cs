@@ -18,7 +18,7 @@ namespace Contagion.Content.Tiles
             TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
             TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
 
-            DustType = ModContent.DustType<PitsandDust>();
+            DustType = ModContent.DustType<Particles.Dusts.PitsandDust>();
             SoundType = SoundID.Dig;
             ItemDrop = ModContent.ItemType<Pitsandstone>();
             AddMapEntry(new Color(41, 51, 43));

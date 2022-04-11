@@ -10,7 +10,7 @@ namespace Contagion.Content.Walls
 		{
 			Main.wallHouse[Type] = false;
 
-			DustType = ModContent.DustType<Particles.PitstoneDust>();
+			DustType = ModContent.DustType<Particles.Dusts.PitstoneDust>();
 			ItemDrop = ModContent.ItemType<Items.WallItems.PitstoneWall>();
 
 			AddMapEntry(new Color(15, 16, 13));

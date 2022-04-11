@@ -23,7 +23,7 @@ namespace Contagion
             int sandStoneType = ModContent.TileType<Pitsandstone_Tile>();
             int hardSandType = ModContent.TileType<HardenedPitsand_Tile>();
 
-            //int grassWallType = ModContent.TileType<ContagionGrass_Tile>();
+            int grassWallType = ModContent.WallType<ContagionGrassWall_Wall>();
             int stoneWallType = ModContent.WallType<PitstoneWall_Wall>();
 
             int sandStoneWallType = ModContent.WallType<PitsandstoneWall_Wall>();
@@ -78,12 +78,12 @@ namespace Contagion
                         }
 
                         //walls
-                        //if (WallID.Sets.Conversion.Grass[wall] && Main.tile[x, y].WallType != (ushort)grassWallType)
-                        //{
-                        //    Main.tile[x, y].WallType = (ushort)grassWallType;
-                        //    WorldGen.SquareTileFrame(x, y);
-                        //    NetMessage.SendTileSquare(-1, x, y, 1);
-                        //}
+                        if (WallID.Sets.Conversion.Grass[wall] && Main.tile[x, y].WallType != (ushort)grassWallType)
+                        {
+                            Main.tile[x, y].WallType = (ushort)grassWallType;
+                            WorldGen.SquareTileFrame(x, y);
+                            NetMessage.SendTileSquare(-1, x, y, 1);
+                        }
                         if (WallID.Sets.Conversion.Stone[wall] && Main.tile[x, y].WallType != (ushort)stoneWallType)
                         {
                             Main.tile[x, y].WallType = (ushort)stoneWallType;
@@ -95,13 +95,15 @@ namespace Contagion
                             Main.tile[x, y].WallType = (ushort)sandStoneWallType;
                             WorldGen.SquareTileFrame(x, y);
                             NetMessage.SendTileSquare(-1, x, y, 1);
-                        }                        
+                        }
                         if (WallID.Sets.Conversion.HardenedSand[wall] && Main.tile[x, y].WallType != (ushort)hardSandWallType)
                         {
                             Main.tile[x, y].WallType = (ushort)hardSandWallType;
                             WorldGen.SquareTileFrame(x, y);
                             NetMessage.SendTileSquare(-1, x, y, 1);
                         }
+
+                        //trees, cactus
                     }
                 }
             }

@@ -19,7 +19,7 @@ namespace Contagion.Content.Tiles
             Main.tileLighted[Type] = true;
             TileID.Sets.Conversion.Ice[Type] = true;
 
-            DustType = ModContent.DustType<SeaGreenIceDust>();
+            DustType = ModContent.DustType<Particles.Dusts.SeaGreenIceDust>();
             SoundType = -1;
             ItemDrop = ModContent.ItemType<SeaGreenIce>();
             AddMapEntry(new Color(143, 224, 155));

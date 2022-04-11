@@ -23,10 +23,12 @@ namespace Contagion.Content.Tiles
             TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
             TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
             TileID.Sets.CanBeDugByShovel[Type] = true;
+            TileID.Sets.Falling[Type] = true;
 
-            DustType = ModContent.DustType<PitsandDust>();
+            DustType = ModContent.DustType<Particles.Dusts.PitsandDust>();
             SoundType = SoundID.Dig;
             ItemDrop = ModContent.ItemType<Pitsand>();
+			SetModCactus(new Trees.BlackCactus());
             AddMapEntry(new Color(25, 24, 25));
         }
 

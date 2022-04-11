@@ -4,16 +4,15 @@ using Terraria.ModLoader;
 
 namespace Contagion.Content.Walls
 {
-    public class PitstoneBrickWall_Wall : ModWall
+    public class ContagionGrassWall_Wall : ModWall
     {
 		public override void SetStaticDefaults()
 		{
 			Main.wallHouse[Type] = false;
 
-			DustType = ModContent.DustType<Particles.Dusts.PitstoneDust>();
-			ItemDrop = ModContent.ItemType<Items.WallItems.PitstoneBrickWall>();
+			DustType = ModContent.DustType<Particles.Dusts.ContagionFoliage1>();
 
-			AddMapEntry(new Color(47, 58, 42));
+			AddMapEntry(new Color(48, 66, 26));
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

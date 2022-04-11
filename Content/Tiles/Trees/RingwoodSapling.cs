@@ -43,7 +43,8 @@ namespace Contagion.Content.Tiles.Trees
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sapling");
 			AddMapEntry(new Color(44, 37, 18), name);
-			DustType = ModContent.DustType<RingwoodDust>();
+			
+			DustType = ModContent.DustType<Particles.Dusts.RingwoodDust>();
 			AdjTiles = new int[] 
 			{ 
 				TileID.Saplings 

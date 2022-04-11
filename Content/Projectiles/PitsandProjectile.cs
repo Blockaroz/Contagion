@@ -26,7 +26,7 @@ namespace Contagion.Content.Projectiles
 			Projectile.hostile = true;
 			Projectile.penetrate = -1;
 			tileType = ModContent.TileType<Tiles.Pitsand_Tile>();
-			dustType = ModContent.DustType<Particles.PitsandDust>();
+			dustType = ModContent.DustType<Particles.Dusts.PitsandDust>();
 		}
 		public override void AI()
 		{

@@ -41,7 +41,7 @@ namespace Contagion.Content.Projectiles
 
             if (Progress > 7f)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Particles.SeaGreenSolution>(), Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Particles.Dusts.SeaGreenSolution>(), Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100);
                 dust.noGravity = true;
                 dust.scale *= 1.75f;
                 dust.velocity *= 2f;
