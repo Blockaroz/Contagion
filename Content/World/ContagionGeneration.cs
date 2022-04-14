@@ -31,7 +31,7 @@ namespace Contagion.Content.World
         public override void PostUpdateWorld()
         {
             if (Main.keyState.IsKeyDown(Keys.D1) && !Main.oldKeyState.IsKeyDown(Keys.D1))
-                GenerateChasmRing(90, Main.MouseWorld.ToTileCoordinates().X, (int)Main.MouseWorld.ToTileCoordinates().Y);
+                Ring(75, Main.MouseWorld.ToTileCoordinates().X, (int)Main.MouseWorld.ToTileCoordinates().Y);
         }
 
         private static int Pitstone => ModContent.TileType<Pitstone_Tile>();
@@ -39,25 +39,30 @@ namespace Contagion.Content.World
 
 		private void GenerateContagionChasm(GenerationProgress progress)
         {
-			
+			int Tunnels = WorldGen.genRand.Next(5, 9);
         }
 
-		private void DigChasmTunnel(int x, int y)
+		private void Entrance(int x, int y)
         {
 
         }
 
-		private void GenerateChasmRing(int ringSize, int x, int y)
+		private void Vein(int x, int y)
+        {
+
+        }
+
+		private void Ring(int ringSize, int x, int y)
         {
 			//place circle
 			for (int i = 0; i < 180; i++)
 			{	
 				Vector2 direction = ((MathHelper.TwoPi / 180 * i) + MathHelper.PiOver2).ToRotationVector2();
 				direction.Y *= Main.rand.NextFloat(1f, 1.05f);
-				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 0.9f), y + (int)(direction.Y * ringSize * 0.9f), 9, 6, Pitstone, addTile: true, overRide: true);
-				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 1.1f), y + (int)(direction.Y * ringSize * 1.1f), 9, 6, Pitstone, addTile: true, overRide: true);
+				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 0.92f), y + (int)(direction.Y * ringSize * 0.92f), 10, 5, Pitstone, addTile: true, overRide: true);
+				WorldGen.TileRunner(x + (int)(direction.X * ringSize * 1.08f), y + (int)(direction.Y * ringSize * 1.08f), 10, 5, Pitstone, addTile: true, overRide: true);
 
-				WorldUtils.Gen(new Point(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize)), new Shapes.Circle(9), new Actions.PlaceWall((ushort)PitstoneWall));
+				WorldUtils.Gen(new Point(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize)), new Shapes.Circle(8), new Actions.PlaceWall((ushort)PitstoneWall));
 
 				if (WorldGen.genRand.Next(100) == 0)
 					WorldGen.PlaceLiquid(x + (int)(direction.X * ringSize), y + (int)(direction.Y * ringSize), LiquidID.Water, 128);
@@ -72,7 +77,7 @@ namespace Contagion.Content.World
 			{
 				Vector2 direction = ((MathHelper.TwoPi / 180 * i) + MathHelper.PiOver2).ToRotationVector2();
 				direction.Y *= Main.rand.NextFloat(1f, 1.05f);
-				WorldGen.digTunnel(x + (direction.X * ringSize), y + (direction.Y * ringSize), 0, 0, 7, 4);
+				WorldGen.digTunnel(x + (direction.X * ringSize), y + (direction.Y * ringSize), 0, 0, 6, 3);
 			}
 			//dig out the entrance mound
 			WorldGen.digTunnel(x, y - ringSize - 8, 0, -2f, 12, 6, true);

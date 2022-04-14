@@ -39,7 +39,6 @@ namespace Contagion.Content.Tiles.Torches
 
         public override void HoldItem(Player player)
         {
-            
             if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
                 Dust.NewDust(new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir), 4, 4, DustID.CursedTorch);
 
