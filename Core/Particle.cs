@@ -17,13 +17,11 @@ namespace Contagion.Core
 
         public Color color;
 
-        public float misc;
+        public bool emit;
 
-        public bool active;
+        public bool Active { get; set; }
 
         public int Type { get; private set; }
-
-        public int Index { get; private set; }
 
         public virtual void Update() { }
 
@@ -42,27 +40,21 @@ namespace Contagion.Core
 
         public static int ParticleType<T>() where T : Particle => ModContent.GetInstance<T>()?.Type ?? -1;
 
-        public virtual Particle NewInstance() => (Particle)MemberwiseClone();
-
-        public static int NewParticle(int type, Vector2 position, Vector2 velocity, Color color, float scale = 1f)
+        public static void NewParticle(int type, Vector2 position, Vector2 velocity, Color color, float scale = 1f)
         {
             if (!Main.gamePaused)
             {
-                Particle p = ParticleSystem.GetParticle(type).NewInstance();
+                Particle p = (Particle)ParticleSystem.GetParticle(type).MemberwiseClone();
                 p.OnSpawn();
                 p.position = position;
                 p.velocity = velocity;
                 p.color = color;
                 p.scale = scale;
                 p.rotation = velocity.ToRotation() + (Main.rand.NextFloat(-0.2f, 0.2f) * MathHelper.TwoPi);
-                p.active = true;
-                p.Index = ParticleSystem.particle.Count;
+                p.Active = true;
                 p.Type = type;
                 ParticleSystem.particle.Add(p);
-                return p.Index;
             }
-               
-            return -1;
         }
     }
 }

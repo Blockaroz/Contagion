@@ -31,7 +31,7 @@ namespace Contagion.Content.Tiles.Torches
 			TileID.Sets.Torch[Type] = true;
 
 			ItemDrop = ModContent.ItemType<ContagionTorch>();
-			DustType = DustID.CursedTorch;//ModContent.DustType<>();
+			DustType = ModContent.DustType<Particles.Dusts.ContagionFlameDust>();
 			AdjTiles = new int[] { TileID.Torches };
 
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
@@ -56,7 +56,7 @@ namespace Contagion.Content.Tiles.Torches
 			AddMapEntry(new Color(253, 221, 3), name);
 
 			if (!Main.dedServ)
-				flameTexture = Mod.Assets.Request<Texture2D>("Content/Tiles/Torches/ContagionTorch_Flame");
+				flameTexture = Mod.Assets.Request<Texture2D>("Content/Tiles/Torches/ContagionTorch_TileFlame");
 		}
 
 		public override float GetTorchLuck(Player player)
@@ -73,7 +73,7 @@ namespace Contagion.Content.Tiles.Torches
 		{
 			Tile tile = Main.tile[i, j];
 
-			Vector3 light = new Color(199, 220, 79).ToVector3();
+			Vector3 light = new Color(154, 219, 32).ToVector3();
 			if (tile.TileFrameX < 66)
 			{
 				r = light.X;
@@ -82,7 +82,7 @@ namespace Contagion.Content.Tiles.Torches
 			}
 		}
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
 		{
 			offsetY = 0;
 
@@ -91,9 +91,7 @@ namespace Contagion.Content.Tiles.Torches
 				offsetY = 2;
 
 				if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
-				{
 					offsetY = 4;
-				}
 			}
 		}
 
@@ -104,11 +102,8 @@ namespace Contagion.Content.Tiles.Torches
 			if (WorldGen.SolidTile(i, j - 1))
 			{
 				offsetY = 2;
-
 				if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
-				{
 					offsetY = 4;
-				}
 			}
 
 			Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);

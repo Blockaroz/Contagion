@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 
@@ -27,15 +28,12 @@ namespace Contagion.Core
         {
             if (Main.netMode != NetmodeID.Server && !Main.gamePaused)
             {
-                for (int i = 0; i < particle.Count; i++)
+                foreach (Particle p in particle.ToList())
                 {
-                    particle[i].position += particle[i].velocity;
-                    particle[i].Update();
-                    if (!particle[i].active)
-                    {
-                        particle.RemoveAt(i);
-                        i--;
-                    }
+                    p.position += p.velocity;
+                    p.Update();
+                    if (!p.Active)
+                        particle.Remove(p);
                 }
             }
         }

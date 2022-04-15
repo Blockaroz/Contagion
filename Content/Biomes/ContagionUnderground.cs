@@ -23,15 +23,15 @@ namespace Contagion.Content.Biomes
 
         public override TileColorStyle TileColorStyle => TileColorStyle.Jungle;
 
-        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Understand_Ruin_Sulfuric");
 
-        public override string BestiaryIcon => "Contagion/Content/Biomes/IconContagionUG";
-        public override string BackgroundPath => "Contagion/Content/Biomes/ContagionMapBackground";
+        public override string BestiaryIcon => "Contagion/Assets/Textures/UI/IconContagionUG";
+        public override string BackgroundPath => "Contagion/Assets/Textures/Backgrounds/ContagionMapBackground";
         public override Color? BackgroundColor => new(30, 36, 27);
 
         public override bool IsBiomeActive(Player player)
         {
-            bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionCountTotal >= 300;
+            bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionCountRegular >= 300;
             bool correctZone = (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight) && !player.ZoneSnow;
             return biomeExists && correctZone;
         }

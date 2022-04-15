@@ -7,7 +7,7 @@ namespace Contagion.Content.Tiles.Trees
 {
     public class BlackCactus : ModCactus
     {
-        private Mod Mod { get => ModLoader.GetMod("Contagion"); }
+        private static Mod Mod { get => ModContent.GetInstance<Contagion>(); }
 
         public override Texture2D GetTexture() => Mod.Assets.Request<Texture2D>("Content/Tiles/Trees/BlackCactus").Value;
     }

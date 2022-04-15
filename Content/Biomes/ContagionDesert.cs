@@ -29,8 +29,6 @@ namespace Contagion.Content.Biomes
         public override string BackgroundPath => "Contagion/Content/Biomes/ContagionDesertMapBackground";
         public override Color? BackgroundColor => new(30, 36, 27);
 
-        internal float ContagionBiomeInfluence;
-
         public override bool IsBiomeActive(Player player)
         {
             bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionCountDesert >= 300;

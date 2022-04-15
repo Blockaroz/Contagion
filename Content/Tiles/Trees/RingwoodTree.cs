@@ -7,7 +7,7 @@ namespace Contagion.Content.Tiles.Trees
 {
     public class RingwoodTree : ModTree
     {
-        private Mod Mod { get => ModLoader.GetMod("Contagion"); }
+        private static Mod Mod { get => ModContent.GetInstance<Contagion>(); }
 
         public override int DropWood() => ModContent.ItemType<Items.TileItems.Ringwood>();
 

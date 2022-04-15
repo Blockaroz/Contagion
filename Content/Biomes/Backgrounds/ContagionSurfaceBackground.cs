@@ -7,7 +7,7 @@ namespace Contagion.Content.Biomes.Backgrounds
 	{
 		public override void ModifyFarFades(float[] fades, float transitionSpeed)
 		{
-			for (int i = 0; i < fades.Length; i++)
+			for (int i = 0; i < fades.Length + 1; i++)
 			{
 				if (i == Slot)
 				{

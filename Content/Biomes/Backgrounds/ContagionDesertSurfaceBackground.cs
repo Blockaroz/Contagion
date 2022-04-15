@@ -24,8 +24,8 @@ namespace Contagion.Content.Biomes.Backgrounds
 			}
 		}
 
-		public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b) => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Content/Biomes/Backgrounds/ContagionDesertFront");
-		public override int ChooseMiddleTexture() => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Content/Biomes/Backgrounds/ContagionDesertMid");
-		public override int ChooseFarTexture() => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Content/Biomes/Backgrounds/ContagionDesertBack");
+		public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b) => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Assets/Textures/Backgrounds/ContagionDesertFront");
+		public override int ChooseMiddleTexture() => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Assets/Textures/Backgrounds/ContagionDesertMid");
+		public override int ChooseFarTexture() => BackgroundTextureLoader.GetBackgroundSlot("Contagion/Assets/Textures/Backgrounds/ContagionDesertBack");
 	}
 }
