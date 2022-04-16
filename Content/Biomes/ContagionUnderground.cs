@@ -32,7 +32,7 @@ namespace Contagion.Content.Biomes
         public override bool IsBiomeActive(Player player)
         {
             bool biomeExists = ModContent.GetInstance<ContagionBlockCounts>().contagionCountRegular >= 300;
-            bool correctZone = (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight) && !player.ZoneSnow;
+            bool correctZone = (player.ZoneSkyHeight && player.ZoneOverworldHeight) && !player.ZoneSnow;
             return biomeExists && correctZone;
         }
     }
