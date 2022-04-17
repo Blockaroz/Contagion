@@ -44,7 +44,7 @@ namespace Contagion.Content.Tiles
 			if (below == null || below.HasTile)
 				canFall = false;
 
-			if (above.HasTile && (TileID.Sets.BasicChest[above.TileType] || TileID.Sets.BasicChestFake[above.TileType] || above.TileType == TileID.PalmTree))
+			if (above.HasTile && (TileID.Sets.BasicChest[above.TileType] || TileID.Sets.BasicChestFake[above.TileType] || above.TileType == TileID.PalmTree || TileID.Sets.BasicDresser[above.TileType]))
 				canFall = false;
 
 			if (canFall)
