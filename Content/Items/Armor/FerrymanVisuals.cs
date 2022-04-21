@@ -21,7 +21,7 @@ namespace Contagion.Content.Items.Armor
             {
                 Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 18);
                 Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.3f);
-                Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255, 255, 255, 0), Main.rand.NextFloat(0.8f, 1f));
+                Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 0));
             }
         }
 

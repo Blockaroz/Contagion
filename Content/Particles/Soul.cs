@@ -43,9 +43,9 @@ namespace Contagion.Content.Particles
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Asset<Texture2D> explosion = Mod.Assets.Request<Texture2D>("Content/Particles/Soul");
-            Rectangle rect = explosion.Frame(1, 4, 0, frame);
-            spriteBatch.Draw(explosion.Value, position - Main.screenPosition, rect, color, rotation, rect.Size() * 0.5f, scale, SpriteEffects.None, 0);
+            Asset<Texture2D> soul = Mod.Assets.Request<Texture2D>("Content/Particles/Soul");
+            Rectangle rect = soul.Frame(1, 4, 0, frame);
+            spriteBatch.Draw(soul.Value, position - Main.screenPosition, rect, color, rotation, rect.Size() * new Vector2(0.5f, 0.33f), scale, SpriteEffects.None, 0);
         }
     }
 }
