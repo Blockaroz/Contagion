@@ -15,13 +15,17 @@ namespace Contagion.Content.Items.Armor
     {
         public bool ferrymanOn;
 
-        public override void PostUpdateMiscEffects()
+        public override void FrameEffects()
         {
-            if (Main.rand.Next(50) < Math.Max(2, Player.velocity.Length()))
+            if (ferrymanOn)
             {
-                Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 18);
-                Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.3f);
-                Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 0));
+                if (Main.rand.Next(50) < Math.Max(2, Player.velocity.Length()))
+                {
+                    Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 10) + new Vector2(0, 18);
+                    Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.1f);
+                    Particle soul = Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 0));
+                    soul.shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
+                }
             }
         }
 
@@ -49,7 +53,8 @@ namespace Contagion.Content.Items.Armor
         {
             Asset<Texture2D> glowMask = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanHood_Glow");
             Vector2 drawPos = drawInfo.drawPlayer.GetHelmetDrawOffset() + new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.headPosition + drawInfo.headVect;
-            DrawData glowMaskData = new DrawData(glowMask.Value, drawPos, drawInfo.drawPlayer.bodyFrame, new Color(255, 255, 255, 50), drawInfo.drawPlayer.headRotation, drawInfo.headVect, 1f, drawInfo.playerEffect, 0);
+            DrawData glowMaskData = new DrawData(glowMask.Value, drawPos, drawInfo.drawPlayer.bodyFrame, new Color(255, 255, 255, 128), drawInfo.drawPlayer.headRotation, drawInfo.headVect, 1f, drawInfo.playerEffect, 0);
+            glowMaskData.shader = drawInfo.drawPlayer.cHead;
             drawInfo.DrawDataCache.Add(glowMaskData);
         }
     }
@@ -73,7 +78,8 @@ namespace Contagion.Content.Items.Armor
             value.Y -= 2f;
             drawPos += value * -drawInfo.playerEffect.HasFlag(SpriteEffects.FlipVertically).ToDirectionInt();
             drawPos.Y += drawInfo.torsoOffset;
-            DrawData glowMaskData = new DrawData(glowMask.Value, drawPos, drawInfo.compTorsoFrame, new Color(255, 255, 255, 50), drawInfo.drawPlayer.bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect, 0);
+            DrawData glowMaskData = new DrawData(glowMask.Value, drawPos, drawInfo.compTorsoFrame, new Color(255, 255, 255, 128), drawInfo.drawPlayer.bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect, 0);
+            glowMaskData.shader = drawInfo.drawPlayer.cBody;
             drawInfo.DrawDataCache.Add(glowMaskData);
         }
     }
