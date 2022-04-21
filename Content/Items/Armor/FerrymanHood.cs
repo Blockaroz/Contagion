@@ -12,7 +12,7 @@ namespace Contagion.Content.Items.Armor
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ferryman's Hood");
-            Tooltip.SetDefault("'Our strength...'");
+            Tooltip.SetDefault("'From the earth, he draws strength...'");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
