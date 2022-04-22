@@ -13,7 +13,7 @@ namespace Contagion.Content.Walls
 			DustType = ModContent.DustType<Particles.Dusts.PitsandDust>();
 			ItemDrop = ModContent.ItemType<Items.WallItems.PitsandstoneWall>();
 
-			AddMapEntry(new Color(44, 51, 42));
+			AddMapEntry(new Color(28, 23, 24));
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
