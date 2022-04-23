@@ -15,23 +15,46 @@ namespace Contagion.Content.Items.Armor
     {
         public bool ferrymanOn;
 
-        public override void FrameEffects()
-        {
-            if (ferrymanOn)
-            {
-                if (Main.rand.Next(50) < Math.Max(2, Player.velocity.Length()))
-                {
-                    Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 10) + new Vector2(0, 18);
-                    Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.1f);
-                    Particle soul = Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 128));
-                    soul.shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
-                }
-            }
-        }
+        //public override void FrameEffects()
+        //{
+        //    if (ferrymanOn)
+        //    {
+        //        if (Main.rand.Next(90) < Math.Max(2, Player.velocity.Length()))
+        //        {
+        //            Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 10) + new Vector2(0, 18);
+        //            Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.1f);
+        //            Particle soul = Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 128));
+        //            soul.shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
+        //        }
+        //    }
+        //}
 
         public override void ResetEffects()
         {
             ferrymanOn = false;
+        }
+    }
+
+    public class FerrymanSouls : PlayerDrawLayer
+    {
+        public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.ForbiddenSetRing);
+
+        //public override bool IsHeadLayer => true;
+
+        protected override void Draw(ref PlayerDrawSet drawInfo)
+        {
+            if (drawInfo.drawPlayer.GetModPlayer<FerrymanVisuals>().ferrymanOn)
+            {
+                Asset<Texture2D> souls = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanSouls");
+                Vector2 drawPos = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2(drawInfo.drawPlayer.bodyFrame.Width / 2, drawInfo.drawPlayer.bodyFrame.Height / 2);
+                Vector2 back = new Vector2(15 * -drawInfo.drawPlayer.direction, 5 * -drawInfo.drawPlayer.gravDir);
+
+                int frameCounter = (int)(drawInfo.drawPlayer.miscCounterNormalized * 40) % 4;
+                Rectangle frame = souls.Frame(1, 4, 0, frameCounter);
+                DrawData soulsData = new DrawData(souls.Value, drawPos + back, frame, Color.White, drawInfo.drawPlayer.bodyRotation, frame.Size() * 0.5f, 1f, drawInfo.playerEffect, 0);
+                soulsData.shader = drawInfo.drawPlayer.cBody;
+                drawInfo.DrawDataCache.Add(soulsData);
+            }
         }
     }
 
@@ -58,6 +81,7 @@ namespace Contagion.Content.Items.Armor
             drawInfo.DrawDataCache.Add(glowMaskData);
         }
     }
+
     public class FerrymanCloakGlow : PlayerDrawLayer
     {
         public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Torso);
