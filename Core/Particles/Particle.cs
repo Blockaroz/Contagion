@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
@@ -37,8 +38,8 @@ namespace Contagion.Core
         protected sealed override void Register() 
         {
             ModTypeLookup<Particle>.Register(this);
-            Type = ParticleSystem.ReserveParticleID();
             ParticleSystem.particleTypes.Add(this);
+            Type = ParticleSystem.ReserveParticleID();
         }
 
         public sealed override void SetupContent() => SetStaticDefaults();
