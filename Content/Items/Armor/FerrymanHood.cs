@@ -27,7 +27,8 @@ namespace Contagion.Content.Items.Armor
 
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<FerrymanCloak>() && legs.type == ModContent.ItemType<FerrymanRobe>();
 
-        public override void PreUpdateVanitySet(Player player) => player.GetModPlayer<FerrymanVisuals>().ferrymanOn = true;
+        public override void EquipFrameEffects(Player player, EquipType type) => player.GetModPlayer<FerrymanVisuals>().ferrymanOn = true;
+
         public override void AddRecipes()
         {
             CreateRecipe()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,15 +10,15 @@ namespace Contagion.Content.Gores
 {
 	public class ContagionWaterGore : ModGore
 	{
-		public override void OnSpawn(Gore gore)
-		{
+        public override void OnSpawn(Gore gore, IEntitySource source)
+        {
 			gore.numFrames = 15;
 			gore.behindTiles = true;
 			gore.timeLeft = Gore.goreTime * 3;
 			ChildSafety.SafeGore[gore.type] = true;
 		}
 
-		public override bool Update(Gore gore)
+        public override bool Update(Gore gore)
 		{
 			if (gore.position.Y < Main.worldSurface * 16.0 + 8.0)
 				gore.alpha = 0;
@@ -46,7 +47,7 @@ namespace Contagion.Content.Gores
 					gore.frame += 1;
 					if (gore.frame == 5)
 					{
-						int droplet = Gore.NewGore(gore.position, gore.velocity, gore.type);
+						int droplet = Gore.NewGore(Entity.GetSource_NaturalSpawn(), gore.position, gore.velocity, gore.type);
 						Main.gore[droplet].frame = 9;
 						Main.gore[droplet].velocity *= 0f;
 					}

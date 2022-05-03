@@ -41,20 +41,19 @@ namespace Contagion.Content.Items.Armor
 
         //public override bool IsHeadLayer => true;
 
+        public override bool GetDefaultVisibility(PlayerDrawSet drawInfo) => drawInfo.drawPlayer.GetModPlayer<FerrymanVisuals>().ferrymanOn;
+
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
-            if (drawInfo.drawPlayer.GetModPlayer<FerrymanVisuals>().ferrymanOn)
-            {
-                Asset<Texture2D> souls = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanSouls");
-                Vector2 drawPos = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2(drawInfo.drawPlayer.bodyFrame.Width / 2, drawInfo.drawPlayer.bodyFrame.Height / 2);
-                Vector2 back = new Vector2(15 * -drawInfo.drawPlayer.direction, 5 * -drawInfo.drawPlayer.gravDir);
+            Asset<Texture2D> souls = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanSouls");
+            Vector2 drawPos = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2(drawInfo.drawPlayer.bodyFrame.Width / 2, drawInfo.drawPlayer.bodyFrame.Height / 2);
+            Vector2 back = new Vector2(15 * -drawInfo.drawPlayer.direction, 5 * -drawInfo.drawPlayer.gravDir);
 
-                int frameCounter = (int)(drawInfo.drawPlayer.miscCounterNormalized * 40) % 4;
-                Rectangle frame = souls.Frame(1, 4, 0, frameCounter);
-                DrawData soulsData = new DrawData(souls.Value, drawPos + back, frame, Color.White, drawInfo.drawPlayer.bodyRotation, frame.Size() * 0.5f, 1f, drawInfo.playerEffect, 0);
-                soulsData.shader = drawInfo.drawPlayer.cBody;
-                drawInfo.DrawDataCache.Add(soulsData);
-            }
+            int frameCounter = (int)(drawInfo.drawPlayer.miscCounterNormalized * 40) % 4;
+            Rectangle frame = souls.Frame(1, 4, 0, frameCounter);
+            DrawData soulsData = new DrawData(souls.Value, drawPos + back, frame, Color.White, drawInfo.drawPlayer.bodyRotation, frame.Size() * 0.5f, 1f, drawInfo.playerEffect, 0);
+            soulsData.shader = drawInfo.drawPlayer.cBody;
+            drawInfo.DrawDataCache.Add(soulsData);
         }
     }
 
@@ -64,15 +63,9 @@ namespace Contagion.Content.Items.Armor
 
         public override bool IsHeadLayer => true;
 
-        protected override void Draw(ref PlayerDrawSet drawInfo)
-        {
-            bool notVanity = drawInfo.drawPlayer.armor[10].IsAir && drawInfo.drawPlayer.armor[0].ModItem is FerrymanHood;
-            bool vanity = drawInfo.drawPlayer.armor[10].ModItem is FerrymanHood;
-            if (vanity || notVanity)
-                DrawMask(drawInfo);
-        }
+        public override bool GetDefaultVisibility(PlayerDrawSet drawInfo) => (drawInfo.drawPlayer.armor[10].IsAir && drawInfo.drawPlayer.armor[0].ModItem is FerrymanHood) || drawInfo.drawPlayer.armor[10].ModItem is FerrymanHood;
 
-        private void DrawMask(PlayerDrawSet drawInfo)
+        protected override void Draw(ref PlayerDrawSet drawInfo)
         {
             Asset<Texture2D> glowMask = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanHood_Glow");
             Vector2 drawPos = drawInfo.drawPlayer.GetHelmetDrawOffset() + new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.headPosition + drawInfo.headVect;
@@ -86,15 +79,9 @@ namespace Contagion.Content.Items.Armor
     {
         public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Torso);
 
-        protected override void Draw(ref PlayerDrawSet drawInfo)
-        {
-            bool notVanity = drawInfo.drawPlayer.armor[11].IsAir && drawInfo.drawPlayer.armor[1].ModItem is FerrymanCloak;
-            bool vanity = drawInfo.drawPlayer.armor[11].ModItem is FerrymanCloak;
-            if (vanity || notVanity)
-                DrawMask(drawInfo);
-        }
+        public override bool GetDefaultVisibility(PlayerDrawSet drawInfo) => (drawInfo.drawPlayer.armor[11].IsAir && drawInfo.drawPlayer.armor[1].ModItem is FerrymanCloak) || drawInfo.drawPlayer.armor[11].ModItem is FerrymanCloak;
 
-        private void DrawMask(PlayerDrawSet drawInfo)
+        protected override void Draw(ref PlayerDrawSet drawInfo)
         {
             Asset<Texture2D> glowMask = Mod.Assets.Request<Texture2D>("Assets/Textures/Armor/FerrymanCloak_Glow");
             Vector2 drawPos = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2(drawInfo.drawPlayer.bodyFrame.Width / 2, drawInfo.drawPlayer.bodyFrame.Height / 2);

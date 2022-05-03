@@ -57,7 +57,7 @@ namespace Contagion.Content.Tiles
 				if (Main.netMode == NetmodeID.SinglePlayer)
 				{
 					Main.tile[i, j].ClearTile();
-					int proj = Projectile.NewProjectile(Projectile.GetNoneSource(), positionX, positionY, 0f, 0.41f, projectileType, 10, 0f, Main.myPlayer);
+					int proj = Projectile.NewProjectile(Entity.GetSource_NaturalSpawn(), positionX, positionY, 0f, 0.41f, projectileType, 10, 0f, Main.myPlayer);
 					Main.projectile[proj].ai[0] = 1f;
 					WorldGen.SquareTileFrame(i, j);
 				}
@@ -79,7 +79,7 @@ namespace Contagion.Content.Tiles
 
 					if (spawnProj)
 					{
-						int proj = Projectile.NewProjectile(Projectile.GetNoneSource(), positionX, positionY, 0f, 2.5f, projectileType, 10, 0f, Main.myPlayer);
+						int proj = Projectile.NewProjectile(Entity.GetSource_NaturalSpawn(), positionX, positionY, 0f, 2.5f, projectileType, 10, 0f, Main.myPlayer);
 						Main.projectile[proj].velocity.Y = 0.5f;
 						Main.projectile[proj].position.Y += 2f;
 						Main.projectile[proj].netUpdate = true;
