@@ -15,24 +15,7 @@ namespace Contagion.Content.Items.Armor
     {
         public bool ferrymanOn;
 
-        //public override void FrameEffects()
-        //{
-        //    if (ferrymanOn)
-        //    {
-        //        if (Main.rand.Next(90) < Math.Max(2, Player.velocity.Length()))
-        //        {
-        //            Vector2 position = Player.Center + Main.rand.NextVector2Circular(15, 10) + new Vector2(0, 18);
-        //            Vector2 velocity = (-Vector2.UnitY * Main.rand.NextFloat()) + (Player.velocity * 0.1f);
-        //            Particle soul = Particle.NewParticle(Particle.ParticleType<Particles.Soul>(), position, velocity, new Color(255 - Main.rand.Next(15), 255, 255, 128));
-        //            soul.shader = Terraria.Graphics.Shaders.GameShaders.Armor.GetSecondaryShader(Player.cBody, Player);
-        //        }
-        //    }
-        //}
-
-        public override void ResetEffects()
-        {
-            ferrymanOn = false;
-        }
+        public override void ResetEffects() => ferrymanOn = false;
     }
 
     public class FerrymanSouls : PlayerDrawLayer
