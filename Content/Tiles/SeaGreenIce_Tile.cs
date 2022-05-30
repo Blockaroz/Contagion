@@ -20,7 +20,7 @@ namespace Contagion.Content.Tiles
             TileID.Sets.Conversion.Ice[Type] = true;
 
             DustType = ModContent.DustType<Particles.Dusts.SeaGreenIceDust>();
-            SoundType = -1;
+            HitSound = null;
             ItemDrop = ModContent.ItemType<SeaGreenIce>();
             AddMapEntry(new Color(143, 224, 155));
         }
@@ -28,7 +28,7 @@ namespace Contagion.Content.Tiles
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             if (Main.LocalPlayer.Center.Distance(new Vector2(i * 16, j * 16)) < 500)
-                SoundEngine.PlaySound(new LegacySoundStyle(2, 50));
+                SoundEngine.PlaySound(SoundID.Shatter);
         }
     }
 }

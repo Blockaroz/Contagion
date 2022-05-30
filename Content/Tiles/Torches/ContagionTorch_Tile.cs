@@ -84,7 +84,7 @@ namespace Contagion.Content.Tiles.Torches
 
         public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData)
         {
-			if (Main.rand.Next(9) == 0)
+			if (Main.rand.NextBool(9))
 				Dust.NewDustPerfect(new Vector2(i * 16f, j * 16f), DustType, -Vector2.UnitY);
         }
 

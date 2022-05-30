@@ -1,5 +1,5 @@
 ﻿using Contagion.Content.Particles;
-using Contagion.Content.Tiles.Trees;
+using Contagion.Content.Tiles.Foliage;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -25,7 +25,6 @@ namespace Contagion.Content.Tiles
 
             DustType = ModContent.DustType<Particles.Dusts.ContagionFoliage1>();
             ItemDrop = ItemID.DirtBlock;
-            SetModTree(new RingwoodTree());
             AddMapEntry(new Color(109, 127, 52));
         }
 
@@ -41,13 +40,7 @@ namespace Contagion.Content.Tiles
 
             return false;
         }
-
-        public override int SaplingGrowthType(ref int style)
-        {
-            style = 0;
-            return ModContent.TileType<RingwoodSapling>();
-        }
-
+        
         public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             if (!fail)

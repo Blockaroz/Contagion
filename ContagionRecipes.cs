@@ -93,7 +93,7 @@ namespace Contagion
 
         public static void AddRecipes()
         {
-            //Remove Recipe for Night's Edge's in crimson
+            //Disable Recipe for Night's Edge's in crimson
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
@@ -102,7 +102,7 @@ namespace Contagion
                 recipe.HasIngredient(ItemID.BladeofGrass) &&
                 recipe.HasIngredient(ItemID.FieryGreatsword) &&
                 recipe.HasResult(ItemID.NightsEdge))
-                    recipe.RemoveRecipe();
+                    recipe.DisableRecipe();
             }
 
             OrganicsRecipes();

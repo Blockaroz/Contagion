@@ -18,7 +18,7 @@ namespace Contagion.Content.Tiles
             TileID.Sets.BlockMergesWithMergeAllBlock[Type] = true;
 
             DustType = ModContent.DustType<Particles.Dusts.PitstoneDust>();
-            SoundType = SoundID.Tink;
+            HitSound = SoundID.Tink;
             ItemDrop = ModContent.ItemType<PitstoneBrick>();
             AddMapEntry(new Color(87, 114, 78));
         }

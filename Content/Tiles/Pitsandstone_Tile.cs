@@ -19,7 +19,7 @@ namespace Contagion.Content.Tiles
             TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
 
             DustType = ModContent.DustType<Particles.Dusts.PitsandDust>();
-            SoundType = SoundID.Dig;
+            HitSound = SoundID.Dig;
             ItemDrop = ModContent.ItemType<Pitsandstone>();
             AddMapEntry(new Color(50, 62, 55));
         }

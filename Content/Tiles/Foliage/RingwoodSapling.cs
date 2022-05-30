@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Contagion.Content.Particles;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Contagion.Content.Tiles.Trees
+namespace Contagion.Content.Tiles.Foliage
 {
     public class RingwoodSapling : ModTile
     {
@@ -43,19 +43,14 @@ namespace Contagion.Content.Tiles.Trees
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sapling");
 			AddMapEntry(new Color(44, 37, 18), name);
-			
-			DustType = ModContent.DustType<Particles.Dusts.RingwoodDust>();
-			AdjTiles = new int[] 
-			{ 
-				TileID.Saplings 
-			};
-		}
 
-        public override int SaplingGrowthType(ref int style)
-        {
-			style = 0;
-			return ModContent.TileType<RingwoodSapling>();
-        }
+			TileID.Sets.TreeSapling[Type] = true;
+			TileID.Sets.CommonSapling[Type] = true;
+			TileID.Sets.SwaysInWindBasic[Type] = true;
+
+			DustType = ModContent.DustType<Particles.Dusts.RingwoodDust>();
+			AdjTiles = new int[] { TileID.Saplings };
+		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
 		{
@@ -64,22 +59,19 @@ namespace Contagion.Content.Tiles.Trees
 
         public override void RandomUpdate(int i, int j)
         {
-            if (WorldGen.genRand.Next(20) == 0)
-            {
-				bool playerNearby = WorldGen.PlayerLOS(i, j);
-				bool growTree = WorldGen.GrowTree(i, j);
-				if (playerNearby && growTree)
-                {
-					WorldGen.TreeGrowFXCheck(i, j);
-                }				
-            }
-        }
+			if (!WorldGen.genRand.NextBool(20))
+				return;
+
+			Framing.GetTileSafely(i, j);
+
+			if (WorldGen.GrowTree(i, j) && WorldGen.PlayerLOS(i, j))
+				WorldGen.TreeGrowFXCheck(i, j);
+		}
 
 		public override void SetSpriteEffects(int i, int j, ref SpriteEffects effects)
 		{
 			if (i % 2 == 1)
 				effects = SpriteEffects.FlipHorizontally;
 		}
-
 	}
 }

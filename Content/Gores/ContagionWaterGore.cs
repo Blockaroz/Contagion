@@ -103,7 +103,7 @@ namespace Contagion.Content.Gores
 				{
 					gore.frame = 10;
 					gore.frameCounter = 0;
-					SoundEngine.PlaySound(SoundID.Drip, gore.position + new Vector2(8), Main.rand.Next(2));
+					SoundEngine.PlaySound(SoundID.Drip, gore.position + new Vector2(8));
 				}
 			}
 			else if (Collision.WetCollision(gore.position + gore.velocity, 16, 14))
@@ -112,7 +112,7 @@ namespace Contagion.Content.Gores
 				{
 					gore.frame = 10;
 					gore.frameCounter = 0;
-					SoundEngine.PlaySound(SoundID.Drip, gore.position + new Vector2(8), Main.rand.Next(2));
+					SoundEngine.PlaySound(SoundID.Drip, gore.position + new Vector2(8));
 				}
 
 				int tileX = (int)(gore.position.X + 8f) / 16;

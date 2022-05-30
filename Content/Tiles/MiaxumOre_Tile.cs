@@ -22,7 +22,7 @@ namespace Contagion.Content.Tiles
             Main.tileBlockLight[Type] = true;
 
             DustType = ModContent.DustType<Particles.Dusts.MiaxumDust>();
-            SoundType = SoundID.Tink;
+            HitSound = SoundID.Tink;
             ItemDrop = ModContent.ItemType<Items.MiaxumOre>();
             AddMapEntry(new Color(55, 198, 79));
         }
