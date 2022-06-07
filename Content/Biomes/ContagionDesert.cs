@@ -23,7 +23,7 @@ namespace Contagion.Content.Biomes
 
         public override TileColorStyle TileColorStyle => TileColorStyle.Jungle;
 
-        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Mharadium");
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/Understand_Ruin_Sulfuric");
 
         public override string BestiaryIcon => "Contagion/Content/Biomes/IconContagionDesert";
         public override string BackgroundPath => "Contagion/Content/Biomes/ContagionDesertMapBackground";

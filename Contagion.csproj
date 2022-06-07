@@ -14,4 +14,9 @@
     <Folder Include="Assets\Textures\UI\" />
     <Folder Include="Common\Systems\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ParticleEngine">
+      <HintPath>lib\ParticleEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

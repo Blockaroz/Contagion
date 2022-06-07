@@ -1,3 +1,4 @@
 displayName = The Contagion
-author = The Contagion Team
-version = 0.1
+author = The Contagion
+version = 0.2
+dllReferences = ParticleEngine;

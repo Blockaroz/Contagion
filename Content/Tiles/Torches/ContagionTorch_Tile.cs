@@ -82,12 +82,6 @@ namespace Contagion.Content.Tiles.Torches
 			}
 		}
 
-        public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawData)
-        {
-			if (Main.rand.NextBool(9))
-				Dust.NewDustPerfect(new Vector2(i * 16f, j * 16f), DustType, -Vector2.UnitY);
-        }
-
         public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
 		{
 			offsetY = 0;

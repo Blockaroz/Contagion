@@ -15,7 +15,7 @@ namespace Contagion.Content.Tiles.Foliage
             UseSpecialGroups = true,
             SpecialGroupMinimalHueValue = 11f / 72f,
             SpecialGroupMaximumHueValue = 0.25f,
-            SpecialGroupMinimumSaturationValue = 0.88f,
+            SpecialGroupMinimumSaturationValue = 0.77f,
             SpecialGroupMaximumSaturationValue = 1f
         };
 
@@ -38,8 +38,8 @@ namespace Contagion.Content.Tiles.Foliage
 
         public override int DropWood() => ModContent.ItemType<Items.TileItems.Ringwood>();
 
-        public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY, ref int topTextureFrameWidth, ref int topTextureFrameHeight)
-        {
-        }
+        public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY, ref int topTextureFrameWidth, ref int topTextureFrameHeight) => topTextureFrameHeight = 88;
+
+        public override int CreateDust() => ModContent.DustType<Particles.Dusts.RingwoodDust>();
     }
 }
