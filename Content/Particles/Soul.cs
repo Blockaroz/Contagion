@@ -1,5 +1,5 @@
 ﻿using System;
-using Contagion.Core;
+using ParticleEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -24,7 +24,7 @@ namespace Contagion.Content.Particles
         {
             //ember ai
             velocity *= 0.98f;
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.NextBool(4))
                 velocity += Main.rand.NextVector2Circular(0.3f, 0.2f);
             velocity.Y -= 0.033f;
 

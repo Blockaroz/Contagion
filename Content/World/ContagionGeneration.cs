@@ -30,8 +30,8 @@ namespace Contagion.Content.World
 
         public override void PostUpdateWorld()
         {
-            if (Main.keyState.IsKeyDown(Keys.D1) && !Main.oldKeyState.IsKeyDown(Keys.D1))
-                Ring(75, Main.MouseWorld.ToTileCoordinates().X, (int)Main.MouseWorld.ToTileCoordinates().Y);
+            //if (Main.keyState.IsKeyDown(Keys.D1) && !Main.oldKeyState.IsKeyDown(Keys.D1))
+            //    Ring(75, Main.MouseWorld.ToTileCoordinates().X, (int)Main.MouseWorld.ToTileCoordinates().Y);
         }
 
         private static int Pitstone => ModContent.TileType<Pitstone_Tile>();
